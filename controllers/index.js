@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-router.use('/api', router);
+// router.use('/api', router);
 router.use('/api/users', require('./users'));
 router.use('/api/movies', require('./movies'));
+router.use('/api/trailers', require('./trailers'));
 
 router.get('/', function(req, res) {
   res.render("index.html");

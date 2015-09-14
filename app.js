@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var app = express();
 var path = require('path');
+var cors = require('cors');
 var port = process.env.PORT || 9000;
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
@@ -12,10 +13,12 @@ var Movie = require('./models/movie');
 
 mongoose.connect('mongodb://localhost/weLoveTrailers');
 
+app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.set("views", "./public");
+app.set("views", "/public/views");
 
 // Serve all js, css, html from the public folder
 app.use(express.static(__dirname + '/public'));
