@@ -5,6 +5,7 @@ var path = require('path');
 var cors = require('cors');
 var port = process.env.PORT || 9000;
 var morgan = require('morgan');
+var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
@@ -18,7 +19,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.set("views", "/public/views");
+// Setting view folder for single index.html file
+
+app.set("views", "./public");
+app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
 // Serve all js, css, html from the public folder
 app.use(express.static(__dirname + '/public'));
