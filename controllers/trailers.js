@@ -10,7 +10,7 @@ router.get('/:search', function(req, res){
   // console.log(req.params.search)
 
   var trailerAddict = 'http://api.traileraddict.com/?film=';
-  var searchTerm = req.params.search
+  var searchTerm = req.params.search;
 
   request(trailerAddict+searchTerm+"&count=5&width=640&width=000", function(err, response, trailer){
     if(!err && response.statusCode === 200){
@@ -18,18 +18,18 @@ router.get('/:search', function(req, res){
     } else {
       console.log(err);
     }
-  })
+  });
 });
 
 //get list of all trailers - working
 router.get('/', function(req, res){
   Trailer.find().populate('movieId similarId').exec(function(err, trailers){
     if (err) {
-      res.json({ err: err, message: 'Something went wrong there are no trailers.!'})
+      res.json({ err: err, message: 'Something went wrong there are no trailers.!'});
     } else {
       res.json(trailers);
     }
-  })
+  });
 });
 
 //get single trailer by id
@@ -39,12 +39,9 @@ router.get('/:trailer_id', function(req, res){
       res.send(err);
     } else {
       console.log('trailer id ' + req.params.trailer_id + ' received');
-      res.json(trailer)
+      res.json(trailer);
     }
-  })
+  });
 });
 
-
-
-
-module.exports = router
+module.exports = router;

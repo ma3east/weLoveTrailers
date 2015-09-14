@@ -18,11 +18,11 @@ router.get('/', function(req, res){
 
 // create new user - working
 router.post('/', function(req, res) {
-  var user = new User(req.body)
+  var user = new User(req.body);
 
   user.save(function(err) {
     if (err) {
-      res.send(err)
+      res.send(err);
     } 
     console.log('User added!');
     res.json(user);
@@ -51,7 +51,7 @@ router.put('/:user_id', function(req, res) {
       console.log("user updated");
     }
   });
-})
+});
 
 // delete a user - working
 router.delete('/:user_id', function(req, res) {
@@ -68,4 +68,4 @@ router.delete('/:user_id', function(req, res) {
   });
 });
 
-module.exports = router
+module.exports = router;

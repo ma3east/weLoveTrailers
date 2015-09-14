@@ -1,5 +1,3 @@
-'use strict'
-
 var express = require('express');
 var router = express.Router();
 
@@ -31,12 +29,12 @@ router.get('/:movie_id', function(req, res){
 
 // create new movie
 router.post('/', function(req, res) {
-  var movie = new Movie(req.body)
+  var movie = new Movie(req.body);
 
   movie.save(function(err) {
     if (err) {
-      res.send(err)
-      console.log('Movie was NOT added', err)
+      res.send(err);
+      console.log('Movie was NOT added', err);
     } else {
       console.log(req.body.name + ' added!');
       res.json(movie);
@@ -52,7 +50,7 @@ router.put('/:movie_id', function(req,res) {
       res.send(err);
     }
 
-    for (property in req.body) {
+    for (var property in req.body) {
       movie[property] = req.body[property];
     }
 
@@ -67,7 +65,7 @@ router.put('/:movie_id', function(req,res) {
       }
     });
   });
-})
+});
 
 // delete a movie
 router.delete('/:movie_id', function(req, res) {
@@ -84,4 +82,4 @@ router.delete('/:movie_id', function(req, res) {
   });
 });
 
-module.exports = router
+module.exports = router;
