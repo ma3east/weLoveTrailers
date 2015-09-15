@@ -1,5 +1,4 @@
 var express = require('express');
-var router = express.Router();
 var app = express();
 var path = require('path');
 var cors = require('cors');
@@ -12,24 +11,25 @@ var mongoose = require('mongoose');
 var User = require('./models/user');
 var Movie = require('./models/movie');
 
-mongoose.connect('mongodb://localhost/weLoveTrailers');
-
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Setting view folder for single index.html file
-
-app.set("views", "./public");
-app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-
 // Serve all js, css, html from the public folder
 app.use(express.static(__dirname + '/public'));
 
+// Setting up views
+app.set("view engine", "ejs");
+
+app.set("views", "./public");
+
+//setup mongoose database
+mongoose.connect('mongodb://localhost/weLoveTrailers');
+
 // Serving bower_components from root
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+
 app.use(morgan('dev'));
 
 app.use(require('./controllers'));

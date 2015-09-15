@@ -7,7 +7,7 @@ router.use('/api/movies', require('./movies'));
 router.use('/api/trailers', require('./trailers'));
 
 router.get('/', function(req, res) {
-  res.render("index.html");
+  res.render("index");
 });
 
 

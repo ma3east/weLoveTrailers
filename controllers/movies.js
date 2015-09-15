@@ -4,24 +4,30 @@ var router = express.Router();
 var Trailer = require('../models/trailer');
 var Movie = require('../models/movie');
 
-//omdbapi movie search
+// example omdbi req via browser - "http://www.omdbapi.com/?t=superman&y=&plot=short&r=json";
 
-router.get('/:search', function(req, res) {
-      
-      var searchTerm = "superman"; //encodeURIComponent(req.body.search);
+//omdbapi movie search - not working
+
+router.get('/search', function(req, res) {
+
+      var url = "http://www.omdbapi.com/?t=";
+      var searchTerm = (req.params.search); //encodeURIComponent(req.body.search);
+
+      // var omd = "http://www.omdbapi.com/?t=superman&y=&plot=short&r=json";
 
       //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
-      request("http://www.omdbapi.com/?t=" + "searchTerm" + "&plot=short&r=json", function(err, response, body) {
+      request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb) {
 
-          if (!err && response.statusCode == 200) {
-            console.log(response);
-            var data = JSON.parse(body);
+        if (!err && response.statusCode == 200) {
+          var data = JSON.parse(omdb); 
+          res.status(200).json(data);
 
-            console.log("Number of movies = " + data.length);
+          console.log(data);
 
-            res.send(data);
+            //res.send(data);
 
           } else {
+            // res.status(500).send(JSON.parse(err));
             console.log(err);
           }
         });

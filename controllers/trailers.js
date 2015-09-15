@@ -1,20 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var parser = require('xml2json');
 
 var Movie = require('../models/movie');
 var Trailer = require('../models/trailer');
 
+
+
 //search for trailers from traileraddict website - in progess
 router.get('/:search', function(req, res){
-  // console.log(req.params.search)
+  //console.log(req.params.search);
 
   var trailerAddict = 'http://api.traileraddict.com/?film=';
-  var searchTerm = req.params.search;
+  var searchTerm = encodeURIComponent(req.params.search);
 
   request(trailerAddict+searchTerm+"&count=5&width=640&width=000", function(err, response, trailer){
     if(!err && response.statusCode === 200){
       console.log("data received" + trailer);
+
+      var options = {
+        object: true
+      };
+
+      var json = parser.toJson(trailer, options);
+      console.log(json);
+
+      res.send(json);
     } else {
       console.log(err);
     }
