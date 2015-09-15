@@ -30,7 +30,7 @@ router.get('/:search', function(req, res){
   });
 });
 
-//get list of all trailers - 
+//get list of all trailers - test
 router.get('/', function(req, res){
   Trailer.find().populate('movieId similarId').exec(function(err, trailers){
     // myJson = parser.toJson(trailers, options);
@@ -43,7 +43,7 @@ router.get('/', function(req, res){
   });
 });
 
-//get single trailer by id - ?
+//get single trailer by id - test
 router.get('/:trailer_id', function(req, res){
   Trailer.findById(req.params.trailer_id).populate('movieId similarId').exec(function(err, trailer){
 

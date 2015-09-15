@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
+
 
 var Trailer = require('../models/trailer');
 var Movie = require('../models/movie');
@@ -8,26 +10,17 @@ var Movie = require('../models/movie');
 
 //omdbapi movie search - not working
 
-router.get('/search', function(req, res) {
+router.get('/:search', function(req, res) {
 
       var url = "http://www.omdbapi.com/?t=";
-      var searchTerm = (req.params.search); //encodeURIComponent(req.body.search);
-
-      // var omd = "http://www.omdbapi.com/?t=superman&y=&plot=short&r=json";
+      var searchTerm = encodeURIComponent(req.params.search);
 
       //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
-      request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb) {
-
+      request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
         if (!err && response.statusCode == 200) {
           var data = JSON.parse(omdb); 
           res.status(200).json(data);
-
-          console.log(data);
-
-            //res.send(data);
-
           } else {
-            // res.status(500).send(JSON.parse(err));
             console.log(err);
           }
         });
@@ -44,7 +37,7 @@ router.get('/', function(req, res) {
   });
 });
 
-//find a single movie - working
+// //find a single movie - working
 router.get('/:movie_id', function(req, res){
   Movie.findById(req.params.movie_id, function(err, movie) {
     if (err) {
