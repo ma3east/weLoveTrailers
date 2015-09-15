@@ -1,4 +1,4 @@
-#node modules
+#Backend dependencies
 node_modules/
 
 # Front-end dependencies
