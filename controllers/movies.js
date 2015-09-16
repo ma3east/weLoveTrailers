@@ -20,6 +20,7 @@ router.get('/:search', function(req, res) {
         if (!err && response.statusCode == 200) {
           var data = JSON.parse(omdb); 
           res.status(200).json(data);
+          console.log("this is omdb data");
           } else {
             console.log(err);
           }

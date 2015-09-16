@@ -2,9 +2,9 @@ angular
   .module("trailersApp")
   .controller("moviesController", MovieController);
 
-  MovieController.$inject = ['Event'];
+  MovieController.$inject = ['Movie'];
 
-  function EventController(Event){
+  function MovieController(Movie){
     var self = this;
     self.all = [];
   }
