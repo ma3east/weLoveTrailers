@@ -7,9 +7,6 @@ angular
   function EventController(Event){
     var self = this;
     self.all = [];
-
-
-
-
-
   }
+
+  

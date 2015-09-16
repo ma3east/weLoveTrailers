@@ -1,12 +1,13 @@
 angular
 .module('trailersApp')
 .factory('User', User);
+
 User.$inject = ['$resource'];
 function User ($resource) {
-  var url = 'http://localhost:9000/api/';
+  var url = 'http://localhost:9000/api/users';
 
   var UserResource = $resource(
-    url + 'users/:id',
+    url + ':id',
     {id: '@_id'}, { 
       'get':    { method: 'GET' },
       'save':   { method: 'POST' },

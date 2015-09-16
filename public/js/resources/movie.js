@@ -1,12 +1,12 @@
 angular
 .module('trailersApp')
-.factory('Trailer', Trailer);
+.factory('Movie', Movie);
 
-Trailer.$inject = ['$resource'];
-function Trailer ($resource) {
-  var url = 'http://localhost:9000/api/trailers/';
+Movie.$inject = ['$resource'];
+function Movie ($resource) {
+  var url = 'http://localhost:9000/api/movies';
 
-  var TrailerResource = $resource(
+  var MovieResource = $resource(
     url + ':id', 
     {id: '@_id'}, {
       'get':    { method: 'GET' },
@@ -14,7 +14,7 @@ function Trailer ($resource) {
       'query':  { method: 'GET', isArray: true },
       'update': { method: 'PUT' },
       'delete': { method: 'DELETE' }
-      
     });
-  return TrailerResource;
+
+  return MovieResource;
 }

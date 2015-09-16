@@ -10,7 +10,7 @@ function UserController(User, CurrentUser){
 init()
 
 function init(){
-  self.CurrentUser = CurrentUser.check();
+  self.CurrentUser = CurrentUser;
 
   if (self.CurrentUser){
     getUsers()
