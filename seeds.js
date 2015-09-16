@@ -5,7 +5,7 @@ db.dropDatabase();
 var andrea = {
   name: "Andrea",
   email: "andrea@gmail.com",
-  password: "password"
+  password: "$2a$05$tcJFLUzGs0cOX96NmcLtV.FBVzBZ0vShbxxTON85AeFs10T.ooKiC"
 };
 
 db.users.save(andrea, function(err){
@@ -19,14 +19,14 @@ db.users.save(andrea, function(err){
 var dami = {
   name: "Damimister",
   email: "dami@gmail.com",
-  password: "password"
+  password: "$2a$05$Txq2DRsSfcdXD0TQ2TQ0..xXat9kKIDtoduM72HCUOLczyXFeI7s6"
 };
 db.users.save(dami);
 
 var sam = {
   name: "Sam the Man",
   email: "sam@gmail.com",
-  password: "password"
+  password: "$2a$05$fLBqmjHimEKAUGvMq6ek3./4S73/VjXXmPNnpjL6.vxlX/nrkndWu"
 };
 db.users.save(sam);
 

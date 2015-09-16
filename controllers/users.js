@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var bcrypt = require('bcrypt');
 
 //will be authentication on fronted via angular
 
