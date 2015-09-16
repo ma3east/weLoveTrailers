@@ -15,6 +15,14 @@ function MainRouter($stateProvider, $urlRouterProvider){
   .state('about', {
     url: "/about",
     templateUrl: "templates/shared/about.html"
+  })
+  .state('signup', {
+    url: "/signup",
+    templateUrl: 'templates/shared/signup.html'
+  })
+  .state('indexMovies', {
+    url: "/movies",
+    templateUrl: "templates/movies/index.html"
   });
 
   $urlRouterProvider.otherwise("/");
