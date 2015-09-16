@@ -3,7 +3,7 @@ angular
 .factory('Movie', Movie);
 
 Movie.$inject = ['$resource'];
-function Movie ($resource) {
+function Movie($resource) {
   var url = 'http://localhost:9000/api/movies';
 
   var MovieResource = $resource(
@@ -13,7 +13,13 @@ function Movie ($resource) {
       'save':   { method: 'POST' },
       'query':  { method: 'GET', isArray: true },
       'update': { method: 'PUT' },
-      'delete': { method: 'DELETE' }
+      'delete': { method: 'DELETE' },
+      'search': {
+        method: 'GET',
+        params: {
+          search: "@search"
+        }
+      }
     });
 
   return MovieResource;

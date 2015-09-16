@@ -1,41 +1,52 @@
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
 var request = require('request');
-
-
 var Trailer = require('../models/trailer');
-var Movie = require('../models/movie');
+var Movie   = require('../models/movie');
 
 // example omdbi req via browser - "http://www.omdbapi.com/?t=superman&y=&plot=short&r=json";
 
 //omdbapi movie search - not working
+// router.get('/:search', function(req, res) {
+//   var url = "http://www.omdbapi.com/?t=";
+//   var searchTerm = encodeURIComponent(req.params.search);
 
-router.get('/:search', function(req, res) {
+//   //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
+//   request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
+//     if (!err && response.statusCode == 200) {
+//       var data = JSON.parse(omdb); 
+//       res.status(200).json(data);
+//       console.log("this is omdb data");
+//       } else {
+//         console.log(err);
+//       }
+//     });
+// });
 
-      var url = "http://www.omdbapi.com/?t=";
-      var searchTerm = encodeURIComponent(req.params.search);
-
-      //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
-      request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
-        if (!err && response.statusCode == 200) {
-          var data = JSON.parse(omdb); 
-          res.status(200).json(data);
-          console.log("this is omdb data");
-          } else {
-            console.log(err);
-          }
-        });
-    });
-
-//get list of movies - working
+// MOVIES INDEX -> /movies/
 router.get('/', function(req, res) {
-  Movie.find(function(err, movies) {
-    if (err) {
-      res.json({ err: err, message: 'Something went wrong - where are the movies!' });
-    } else {
-      res.json(movies);
-    }
-  });
+  if (!req.query.search) {
+    Movie.find(function(err, movies) {
+      if (err) {
+        res.json({ err: err, message: 'Something went wrong - where are the movies!' });
+      } else {
+        res.json(movies);
+      }
+    });
+  } else {
+    var url = "http://www.omdbapi.com/?t=";
+    var searchTerm = encodeURIComponent(req.query.search);
+
+    //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
+    request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
+      if (!err && response.statusCode == 200) {
+        var data = JSON.parse(omdb); 
+        res.status(200).send(data);
+      } else {
+        res.status(500).send({ message: err });
+      }
+    });
+  }
 });
 
 // //find a single movie - working

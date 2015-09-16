@@ -13,8 +13,14 @@ function Trailer ($resource) {
       'save':   { method: 'POST' },
       'query':  { method: 'GET', isArray: true },
       'update': { method: 'PUT' },
-      'delete': { method: 'DELETE' }
-      
+      'delete': { method: 'DELETE' },
+      'search': {
+        method: 'GET',
+        params: {
+          search: "@search"
+        }
+      }
     });
+  
   return TrailerResource;
 }

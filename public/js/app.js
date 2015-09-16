@@ -1,28 +1,33 @@
 angular
   .module('trailersApp', ['ngResource', 'ui.router'])
+  .constant('API', 'http://localhost:3000/api')
   .config(MainRouter)
 
 function MainRouter($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('homepage', {
     url: "/",
-    templateUrl: "templates/homepage/home.html"
+    templateUrl: "js/templates/homepage/home.html"
   })
   .state('login', {
     url: "/login",
-    templateUrl: "templates/shared/login.html"
+    templateUrl: "js/templates/shared/login.html"
   })
   .state('about', {
     url: "/about",
-    templateUrl: "templates/shared/about.html"
+    templateUrl: "js/templates/shared/about.html"
   })
   .state('signup', {
     url: "/signup",
-    templateUrl: 'templates/shared/signup.html'
+    templateUrl: 'js/templates/shared/signup.html'
   })
+  .state('showTrailers', {
+      url: "/trailers",
+      templateUrl: 'js/templates/trailers/show.html'
+    })
   .state('indexMovies', {
     url: "/movies",
-    templateUrl: "templates/movies/index.html"
+    templateUrl: "js/templates/movies/index.html"
   });
 
   $urlRouterProvider.otherwise("/");

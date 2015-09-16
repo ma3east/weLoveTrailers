@@ -1,16 +1,16 @@
 angular
 .module("trailersApp")
-.controller("usersController", UserController);
+.controller("usersController", UsersController);
 
-UserController.$inject = ['User', 'CurrentUser']
-function UserController(User, CurrentUser){
+UsersController.$inject = ['User', 'CurrentUser']
+function UsersController(User, CurrentUser){
   var self = this;
 }
 
 init()
 
 function init(){
-  self.CurrentUser = CurrentUser;
+  // self.CurrentUser = CurrentUser.check();
 
   if (self.CurrentUser){
     getUsers()
@@ -26,7 +26,8 @@ function init(){
     )}
 
     function login(response){
-      self.CurrentUser = CurrentUser.login(response)
+      self.CurrentUser = CurrentUser.login(response);
+      $state.go('indexMovies');
       init()
     } 
 

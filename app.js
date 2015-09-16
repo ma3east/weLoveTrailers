@@ -11,8 +11,6 @@ var mongoose = require('mongoose');
 var User = require('./models/user');
 var Movie = require('./models/movie');
 
-// var youtubeServerKey = process.env.YOUTUBE_SERVER_API_KEY;
-
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));

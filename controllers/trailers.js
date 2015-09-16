@@ -14,7 +14,6 @@ var options = {
 
 // search youtube - just enter search term, have appended trailer already
 router.get('/:search', function(req, res){
-
   var youtubeServerKey = process.env.YOUTUBE_SERVER_API_KEY;
   var searchTerm = encodeURIComponent(req.params.search);
 
@@ -56,15 +55,31 @@ router.get('/:search', function(req, res){
 
 //get list of all trailers - test
 router.get('/', function(req, res){
-  Trailer.find().populate('movieId similarId').exec(function(err, trailers){
-    // myJson = parser.toJson(trailers, options);
+  if (!req.query.search) {
+    Trailer.find().populate('movieId similarId').exec(function(err, trailers){
+      // myJson = parser.toJson(trailers, options);
 
-    if (err) {
-      res.send({ err: err, message: 'Something went wrong there are no trailers.!'});
-    } else {
-      res.send(trailers);
-    }
-  });
+      if (err) {
+        res.send({ err: err, message: 'Something went wrong there are no trailers.!'});
+      } else {
+        res.send(trailers);
+      }
+    });
+
+  } else {
+    var youtubeServerKey = process.env.YOUTUBE_SERVER_API_KEY;
+    var searchTerm = encodeURIComponent(req.query.search);
+
+    request('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchTerm+' trailer&type=video&key='+youtubeServerKey, function(err, response, youtube){
+
+      if (!err && response.statusCode == 200) {
+        var data = JSON.parse(youtube); 
+        res.status(200).send(data);
+      } else {
+        res.status(500).send({ message: err });
+      }
+    });
+  }
 });
 
 //get single trailer by id - test

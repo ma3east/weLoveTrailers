@@ -13,7 +13,6 @@ var movieSchema = new mongoose.Schema({
   actors: Array,
   plot: String,
   image: String
-
 });
 
 var Movie = mongoose.model('Movie', movieSchema);

@@ -1,0 +1,40 @@
+<div ng-controller="moviesController as movies">
+
+  <section ng-hide="movies.movie">
+    <h3>movies index</h3>
+    <form ng-submit="movies.getMovies()">
+      <div class="form-group">
+      <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query">
+
+      </div>
+      <div class="form-group">
+        <button class="btn btn-info" type="submit">Search</button> 
+      </div>
+    </form>
+
+    <ul>
+      <li ng-repeat="movie in movies.all">
+        <ul>
+          <li><a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a></li>
+          <li><img ng-src="{{ movie.Poster }}"></li>
+        </ul>
+        
+      </li>
+    </ul>
+  </section>
+
+  <section ng-show="movies.movie">
+    <h2>{{ movies.movie.Title }}</h2>
+    <img ng-src="{{ movies.movie.Poster }}">
+    <a ng-click="movies.resetMovie()">Back</a>
+    
+    <ul>
+      <li ng-repeat="trailer in movies.movie.trailers">
+        <ul>
+          <li>{{ trailer.id.videoId }}<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+</div>
