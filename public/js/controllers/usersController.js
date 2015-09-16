@@ -19,6 +19,17 @@ function init(){
     self.user = {};   
   }
 
+  self.authorize = function(){
+    User.authorize(self.user, showMessage);
+  }
+  self.join = function(){
+    User.join(self.user, showMessage);
+  }
+
+  // self.login = function(){
+  //   User.login(self.user, login);
+  // }
+
   function getUsers(){
     User.query(function(response){
       self.all = response;

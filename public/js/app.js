@@ -1,9 +1,12 @@
 angular
-  .module('trailersApp', ['ngResource', 'ui.router'])
-  .constant('API', 'http://localhost:3000/api')
+  .module('trailersApp', ['ngResource', 'ui.router', 'angular-jwt'])
+  .constant('API', 'http://localhost:9000/api')
   .config(MainRouter)
 
-function MainRouter($stateProvider, $urlRouterProvider){
+function MainRouter($stateProvider, $urlRouterProvider, $httpProvider){
+
+  $httpProvider.interceptors.push('auth');
+
   $stateProvider
   .state('homepage', {
     url: "/",

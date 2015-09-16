@@ -14,7 +14,9 @@ function User ($resource) {
       'query':  { method: 'GET', isArray: true },
       'update': { method: 'PUT' },
       'delete': { method: 'DELETE' },
-      'login':  {url: url + 'login', method: 'POST' },
+      'authorize': { url: url + '/authorize',
+                    method: 'POST' },
+      'login':  { url: url + 'login', method: 'POST' },
       'signup': { url: url + 'signup', method: 'POST' }
     })
   return UserResource;

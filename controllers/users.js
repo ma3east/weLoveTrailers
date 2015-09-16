@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+// var authenticationController = require('./authenticationController');
 
 //will be authentication on fronted via angular
 
