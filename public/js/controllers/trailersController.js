@@ -15,9 +15,6 @@ function TrailerController(Trailer, state){
   self.myTrailers = {};
 
   console.log("self.trailer =  " + self.trailer);
-  
-  // self.theBestVideo = 'sMKoNBRZM1M'; 
-  // $scope.theBestVideo = 'sMKoNBRZM1M';
 }
 
 self.getMyTrailers = function() {

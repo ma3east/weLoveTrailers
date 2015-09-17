@@ -1,4 +1,9 @@
+/*font-family: 'Freckle Face', cursive;
+font-family: 'Frijole', cursive;
+font-family: 'Finger Paint', cursive;*/
+
 body {
+  font-family: 'Finger Paint', cursive;
   padding-top: 50px
   margin: 0;
   width: 100%;
@@ -11,6 +16,10 @@ body {
   text-align: center;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Finger Paint', cursive;
+}
+
 /*//image.tmdb.org/t/p/original/tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg*/
 
 .header {
@@ -21,9 +30,18 @@ body {
   margin: 0 50%;
 }
 
-.showMT {
-  margin: 0 100px;
-  border: 1px solid white;
+.back {
+  margin: 0 40%;
+}
+
+.opacB {
+  /*margin: 0 100px;
+  border: 1px solid white;*/
+  margin: 10px 0;
+  background:linear-gradient(
+   rgba(0, 0, 0, 0.8), 
+   rgba(70, 70, 70, 0.8)
+   ),
 }
 
 .showTrailers {

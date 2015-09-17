@@ -23,17 +23,6 @@ function MoviesController(Movie, Trailer){
   self.query = null;
   self.movie = null;
 
-  console.log("self.movie = " + self.movie);
-
-  // self.theBestVideo = 'sMKoNBRZM1M';
-  // $scope.theBestVideo = 'sMKoNBRZM1M';
-
-  console.log("self.theBestVideo = " + self.theBestVideo);
-  // console.log("scope.theBestVideo = " + $scope.theBestVideo);
-
-
-  // $scope.theBestVideo = 'sMKoNBRZM1M';
-  
   self.getMovies = function(){
     self.all = []
 
