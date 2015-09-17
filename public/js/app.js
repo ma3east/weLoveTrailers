@@ -9,9 +9,9 @@ function TrailersInit($httpProvider, $stateProvider, $urlRouterProvider){
   $httpProvider.interceptors.push('AuthInterceptor');
   MainRouter($stateProvider, $urlRouterProvider);
 }
-MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
+MainRouter.$inject = ['$stateProvider', '$urlRouterProvider', '$state'];
 
-function MainRouter($stateProvider, $urlRouterProvider){
+function MainRouter($stateProvider, $urlRouterProvider, $state){
   $stateProvider
   .state('home', {
     url: "/",
