@@ -1,10 +1,10 @@
 <div ng-controller="moviesController as movies">
 
-  <section ng-hide="movies.movie">
-    <h3>movies index</h3>
+  <section ng-hide="movies.movie" class="getMovies">
+    <h4>Search for a movie, then use the link to get the trailers</h4>
     <form ng-submit="movies.getMovies()">
       <div class="form-group">
-      <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query">
+        <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query" ng-change="movies.getMovies()">
 
       </div>
       <div class="form-group">
@@ -13,9 +13,13 @@
     </form>
 
     <ul>
-      <li ng-repeat="movie in movies.all">
+      <li ng-repeat="movie in movies.all" class="showMT">
         <ul>
-          <li><a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a></li>
+          <li>
+            <h3>
+              <a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a>
+            </h3>
+          </li>
           <li><img ng-src="{{ movie.Poster }}"></li>
         </ul>
         
@@ -23,24 +27,21 @@
     </ul>
   </section>
 
-  <section ng-show="movies.movie">
-    <h2>{{ movies.movie.Title }}</h2>
-    <h5>{{ movies.movie.Plot }}</h5>
-    <h6>Released: {{ movies.movie.Released }}</h6>
-    <img ng-src="{{ movies.movie.Poster }}">
-    <a ng-click="movies.resetMovie()">Back</a>
-    
-    <ul>
-      <li ng-repeat="trailer in movies.movie.trailers">
-        <ul>
-          <li>{{ trailer.id.videoId }}<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{ trailer.id.videoId }}" frameborder="0" allowfullscreen></iframe></li>
+  <div ng-show="movies.movie">
+    <section>
+      <h2>{{ movies.movie.Title }}</h2>
+      <h5>{{ movies.movie.Plot }}</h5>
+      <h6>Released: {{ movies.movie.Released }}</h6>
+      <img ng-src="{{ movies.movie.Poster }}">
+      <a ng-click="movies.resetMovie()">Back</a>
 
-          {{ trailer.id.videoId }}
-        
-          <!-- <li ng-controller="MyCtrl"><youtube-video video-id="sMKoNBRZM1M"></youtube-video></li> -->
-
-        </ul>
-      </li>
-    </ul>
-  </section>
+    </section>
+    <section ng-repeat="trailer in movies.movie.trailers">
+      <ul>
+        <li class="showTrailers">{{ trailer.id.snippet.title }}
+          <youtube-video video-id="trailer.id.videoId"></youtube-video>
+        </li>
+      </ul>
+    </section>
+  </div>
 </div>

@@ -1,7 +1,27 @@
-/*body {
-  background-color: azure;
-}*/
-
 body {
-  margin: 0 30px;
+  margin: 0;
+  width: 100%;
+  background: url(//image.tmdb.org/t/p/original/tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.showMT {
+  margin: 0 100px;
+  border: 1px solid white;
+}
+
+.showTrailers {
+
+  border: 1px white: solid;
+}
+
+ul li {
+  list-style: none;
+}
+
+.getMovies {
+  margin: 20px 100px;
 }

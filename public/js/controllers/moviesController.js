@@ -35,10 +35,11 @@ function MoviesController(Movie, Trailer){
   // $scope.theBestVideo = 'sMKoNBRZM1M';
   
   self.getMovies = function(){
+    self.all = []
+
     Movie.search({ search: self.query }, function(data){
       self.all.push(data);
-
-      console.log("self.movie = " + self.movie);
+      // console.log("self.movie = " + self.movie);
     }); 
   }
 

@@ -1,7 +1,7 @@
 angular
   .module('trailersApp', ['ngResource', 'angular-jwt', 'ui.router', 'youtube-embed'])
   .constant('API', 'http://localhost:9000/api')
-  .config(TrailersInit)
+  .config(TrailersInit);
 
   TrailersInit.$inject = ['$httpProvider', '$stateProvider', '$urlRouterProvider'];
 function TrailersInit($httpProvider, $stateProvider, $urlRouterProvider){
@@ -15,7 +15,8 @@ function MainRouter($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('home', {
     url: "/",
-    templateUrl: "js/templates/homepage/home.html"
+    // templateUrl: "js/templates/homepage/home.html"
+    templateUrl: "js/templates/movies/index.html"
   })
   .state('login', {
     url: "/login",
