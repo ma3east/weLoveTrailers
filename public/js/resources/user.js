@@ -15,8 +15,8 @@ function User ($resource) {
       'update':   { method: 'PUT' },
       'remove':   { method: 'DELETE' },
       'delete':   { method: 'DELETE' },
-      'login':    { url: url + '/login', method: 'POST' },
-      'signup':   { url: url + '/signup', method: 'POST' }
+      'login':    { url: url + '/auth/login', method: 'POST' },
+      'signup':   { url: url + '/auth/signup', method: 'POST' }
     })    
   return UserResource;
 }

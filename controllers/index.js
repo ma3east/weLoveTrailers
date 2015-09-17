@@ -19,9 +19,7 @@ router.use(function (error, request, response, next) {
 router.use('/api/users', require('./users'));
 router.use('/api/movies', require('./movies'));
 router.use('/api/trailers', require('./trailers'));
-router.use('/api/authorize', require('./authenticationController'));
-router.use('/api/login', require('./authenticationController'));
-router.use('/api/signup', require('./authenticationController'));
+router.use('/api/auth', require('./authenticationController'));
 
 router.get('/', function(req, res) {
   res.render("index.html");
