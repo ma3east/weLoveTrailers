@@ -21,6 +21,5 @@ function User ($resource) {
   return UserResource;
 }
 
-
 // 'authorize':{ url: url + '/authorize',
 //               method: 'POST' },

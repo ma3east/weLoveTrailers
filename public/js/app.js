@@ -47,5 +47,4 @@ function MainRouter($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/");
 }
 
-
 console.log("app.js front end working");

@@ -6,6 +6,7 @@ var secret = config.secret;
 
 //middleware to check for token
 
+//leave this out for now so can test sight without having to worry about access
 // router.use('/api', expressJWT({secret: config.secret})
 //   .unless({path: ['/api/authorize', '/api/signup', '/api/login'], method: 'POST'}));
 
@@ -22,16 +23,8 @@ router.use('/api/trailers', require('./trailers'));
 router.use('/api/auth', require('./authenticationController'));
 
 router.get('/', function(req, res) {
-  res.render("index.html");
+  res.render("index");
 });
-
-
-//get api index
-// router.get('/api', function(req, res) {
-//   res.json({ message: 'This is a call to the API index.' });
-
-// });
-
 
 module.exports = router;
 

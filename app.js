@@ -11,9 +11,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var config = require('./config/config');
 
-// var User = require('./models/user');
-// var Movie = require('./models/movie');
-
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
