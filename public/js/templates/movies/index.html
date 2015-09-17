@@ -25,6 +25,8 @@
 
   <section ng-show="movies.movie">
     <h2>{{ movies.movie.Title }}</h2>
+    <h5>{{ movies.movie.Plot }}</h5>
+    <h6>Released: {{ movies.movie.Released }}</h6>
     <img ng-src="{{ movies.movie.Poster }}">
     <a ng-click="movies.resetMovie()">Back</a>
     
@@ -32,10 +34,13 @@
       <li ng-repeat="trailer in movies.movie.trailers">
         <ul>
           <li>{{ trailer.id.videoId }}<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{ trailer.id.videoId }}" frameborder="0" allowfullscreen></iframe></li>
-          <!-- <li><youtube-video video-id="theBestVideo"></youtube-video></li> -->
+
+          {{ trailer.id.videoId }}
+        
+          <!-- <li ng-controller="MyCtrl"><youtube-video video-id="sMKoNBRZM1M"></youtube-video></li> -->
+
         </ul>
       </li>
     </ul>
   </section>
-
 </div>

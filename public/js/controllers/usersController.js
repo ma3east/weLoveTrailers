@@ -11,7 +11,7 @@ function UsersController(User, TokenService, $state){
   self.user = {};
 
   function showMessage(res){
-    // self.CurrentUser = CurrentUser.check();
+    
     var token = res.token ? res.token : null;
 
     if(token) { console.log(res); }
@@ -28,8 +28,8 @@ function UsersController(User, TokenService, $state){
   } 
 
   self.logout = function(){
-    console.log('logged out')
     TokenService.removeToken && TokenService.removeToken();
+    console.log('You are logged out and token should be removed!')
     $state.go('home');
   }
 
@@ -39,13 +39,13 @@ function UsersController(User, TokenService, $state){
   }
 
   self.isLoggedIn = function() {
-    console.log('I am logged in')
+    // console.log('I am logged in')
     return TokenService.isLoggedIn ? TokenService.isLoggedIn() : false;
   }
 
-  self.authorize = function(){
-      User.authorize(self.user, showMessage);
-    }
+  // self.authorize = function(){
+  //     User.authorize(self.user, showMessage);
+  //   }
 
   return self 
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="UsersController as users">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -7,33 +7,37 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#/">wLt</a>
+      <a class="navbar-brand" href="/#/">wlt</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <!-- <ul class="nav navbar-nav">
         <li class="active"><a href="/#/login">Login <span class="sr-only">(current)</span></a></li>
+        <li><a href="/#/logout">Log Out</a></li>
         <li><a href="/#/signup">Sign Up</a></li>
-      </ul>
+        
+      </ul> -->
       <ul class="nav navbar-nav navbar-right">
-
         <li><a href="/#/movies">Movies</a></li>
         <li><a href="/#/trailers">Trailers</a></li>
         <li><a href="/#/about">About</a></li>
-<!-- 
-        <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp M</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav">
+      <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp</a></li>
         <li ng-hide="users.isLoggedIn()"><a href="/#/login">Login</a></li>
         <li ng-hide="users.isLoggedIn()"><a href="/#/movies">Search Movies</a></li>
         <li ng-show="users.isLoggedIn()"><a href="/#/">Home</a></li>
+        <!-- <li ng-show="users.isLoggedIn()"><a href="/#/">Log Out</a></li> -->
 
-        <li ng-hide="users.isLoggedIn()">
-          <a ng-click="users.logout()" href="/#/logout">Logout</a>
+        <li ng-show="users.isLoggedIn()">
+          <a ng-click="users.logout()" href="/#/logout">Log Out</a>
         </li>
 
-      <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp</a></li>
-              <li ng-hide="users.isLoggedIn()"><a href="/#/login">Login</a></li>
-              <li ng-hide="users.isLoggedIn()"><a href="/#/movies">Search movies</a></li>
-              <li ng-show="users.isLoggedIn()"><a href="/#/">Home</a></li> -->
+        <!-- <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp</a></li>
+        <li ng-hide="users.isLoggedIn()"><a href="/#/login">Login</a></li>
+        <li ng-hide="users.isLoggedIn()"><a href="/#/movies">Search movies</a></li>
+        <li ng-show="users.isLoggedIn()"><a href="/#/">Home</a></li> -->
 
       </ul>
     </div>

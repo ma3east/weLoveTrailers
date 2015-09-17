@@ -1,8 +1,34 @@
 <h2>We Love Trailers!</h2>
 
-<p>this is the landing page</p>
+<p>this is the home page - will aim to show some random trailers</p>
 
-<form>
+<li><a href="/#/movies">Search Movies</a></li>
+
+<div ng-controller="trailersIndexCtrl as trailers">
+
+{{ 2 + 2 }}
+
+<section ng-show="trailers.trailer">
+ 
+  
+</section>
+  
+
+</div>
+
+
+<!-- <form ng-submit="movies.getMovies()">
+  <div class="form-group">
+  <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query">
+
+  </div>
+  <div class="form-group">
+    <button class="btn btn-info" type="submit">Search</button> 
+  </div>
+</form> -->
+
+
+<!-- <form>
   <div class="form-group">
   <input type="search" class="form-control" placeholder="search trailers" name="trailer search">
 
@@ -11,4 +37,4 @@
     <button class="btn btn-info" type="submit">Search</button> 
   </div>
 
-</form>
+</form> -->

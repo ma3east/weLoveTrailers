@@ -7,9 +7,7 @@ angular
 function TrailersInit($httpProvider, $stateProvider, $urlRouterProvider){
 
   $httpProvider.interceptors.push('AuthInterceptor');
-
-  MainRouter($stateProvider, $urlRouterProvider)
-
+  MainRouter($stateProvider, $urlRouterProvider);
 }
 MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 

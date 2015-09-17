@@ -2,9 +2,9 @@ angular
 .module("trailersApp")
 .controller("trailersController", TrailerController);
 
-TrailerController.$inject = ['Trailer', 'CurrentUser', '$state'];
+TrailerController.$inject = ['Trailer', '$state'];
 
-function TrailerController(Trailer, CurrentUser, state){
+function TrailerController(Trailer, state){
   var self = this;
 
   self.all = [];
@@ -13,6 +13,11 @@ function TrailerController(Trailer, CurrentUser, state){
   self.trailer = {};
   self.currentTrailer = {};
   self.myTrailers = {};
+
+  console.log("self.trailer =  " + self.trailer);
+  
+  // self.theBestVideo = 'sMKoNBRZM1M'; 
+  // $scope.theBestVideo = 'sMKoNBRZM1M';
 }
 
 self.getMyTrailers = function() {
