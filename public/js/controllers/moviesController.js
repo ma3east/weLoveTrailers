@@ -1,14 +1,17 @@
 angular
   .module("trailersApp")
-  .controller("moviesController", MovieController);
+  .controller("moviesController", MoviesController);
 
-MovieController.$inject = ['Movie', 'Trailer'];
-function MovieController(Movie, Trailer){
+MoviesController.$inject = ['Movie', 'Trailer'];
+function MoviesController(Movie, Trailer, $scope){
   var self   = this;
 
   self.all   = [];
   self.query = null;
   self.movie = null;
+  self.theBestVideo = 'sMKoNBRZM1M'; //this.id.videoId
+
+  //$scope.theBestVideo = ''; //sMKoNBRZM1M'
 
   self.getMovies = function(){
     Movie.search({ search: self.query }, function(data){

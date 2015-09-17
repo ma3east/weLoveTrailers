@@ -1,20 +1,31 @@
 angular
-  .module('trailersApp', ['ngResource', 'ui.router', 'angular-jwt'])
+  .module('trailersApp', ['ngResource', 'angular-jwt', 'ui.router', 'youtube-embed'])
   .constant('API', 'http://localhost:9000/api')
-  .config(MainRouter)
+  .config(TrailersInit)
 
-function MainRouter($stateProvider, $urlRouterProvider, $httpProvider){
+  TrailersInit.$inject = ['$httpProvider', '$stateProvider', '$urlRouterProvider'];
+function TrailersInit($httpProvider, $stateProvider, $urlRouterProvider){
 
-  $httpProvider.interceptors.push('auth');
+  $httpProvider.interceptors.push('AuthInterceptor');
 
+  MainRouter($stateProvider, $urlRouterProvider)
+
+}
+MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+function MainRouter($stateProvider, $urlRouterProvider){
   $stateProvider
-  .state('homepage', {
+  .state('home', {
     url: "/",
     templateUrl: "js/templates/homepage/home.html"
   })
   .state('login', {
     url: "/login",
     templateUrl: "js/templates/shared/login.html"
+  })
+  .state('logout', {
+    url: "/logout",
+    templateUrl: "js/templates/shared/logout.html"
   })
   .state('about', {
     url: "/about",

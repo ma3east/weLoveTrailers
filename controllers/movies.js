@@ -49,7 +49,7 @@ router.get('/', function(req, res) {
   }
 });
 
-// //find a single movie - working
+//find a single movie - working
 router.get('/:movie_id', function(req, res){
   Movie.findById(req.params.movie_id, function(err, movie) {
     if (err) {

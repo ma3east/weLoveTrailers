@@ -2,14 +2,17 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var cors = require('cors');
+var expressJWT = require("express-jwt");
+var passport = require('passport');
 var port = process.env.PORT || 9000;
 var morgan = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var config = require('./config/config');
 
-var User = require('./models/user');
-var Movie = require('./models/movie');
+// var User = require('./models/user');
+// var Movie = require('./models/movie');
 
 app.use(cors());
 
@@ -26,6 +29,11 @@ app.set("views", "./public");
 
 //setup mongoose database
 mongoose.connect('mongodb://localhost/weLoveTrailers');
+
+
+// authentication stuff
+require('./config/passport')(passport);
+var secret = config.secret;
 
 // Serving bower_components from root
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
