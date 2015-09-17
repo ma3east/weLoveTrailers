@@ -1,47 +1,45 @@
-<div ng-controller="moviesController as movies">
+  <div ng-controller="moviesController as movies">
+    <section ng-hide="movies.movie" class="getMovies">
+      <h4>Search for a movie, then use the link to get the trailers</h4>
+      <form ng-submit="movies.getMovies()">
+        <div class="form-group">
+          <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query" ng-change="movies.getMovies()">
 
-  <section ng-hide="movies.movie" class="getMovies">
-    <h4>Search for a movie, then use the link to get the trailers</h4>
-    <form ng-submit="movies.getMovies()">
-      <div class="form-group">
-        <input type="search" class="form-control" placeholder="search movies" name="movie search" ng-model="movies.query" ng-change="movies.getMovies()">
-
-      </div>
-      <div class="form-group">
-        <button class="btn btn-info" type="submit">Search</button> 
-      </div>
-    </form>
-
-    <ul>
-      <li ng-repeat="movie in movies.all" class="showMT">
-        <ul>
-          <li>
-            <h3>
-              <a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a>
-            </h3>
-          </li>
-          <li><img ng-src="{{ movie.Poster }}"></li>
-        </ul>
-        
-      </li>
-    </ul>
-  </section>
-
-  <div ng-show="movies.movie">
-    <section>
-      <h2>{{ movies.movie.Title }}</h2>
-      <h5>{{ movies.movie.Plot }}</h5>
-      <h6>Released: {{ movies.movie.Released }}</h6>
-      <img ng-src="{{ movies.movie.Poster }}">
-      <a ng-click="movies.resetMovie()">Back</a>
-
-    </section>
-    <section ng-repeat="trailer in movies.movie.trailers">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-info centre" type="submit">Search</button> 
+        </div>
+        </form>
       <ul>
-        <li class="showTrailers">{{ trailer.id.snippet.title }}
-          <youtube-video video-id="trailer.id.videoId"></youtube-video>
+        <li ng-repeat="movie in movies.all" class="showMT">
+          <ul>
+            <li>
+              <h3>
+                <a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a>
+              </h3>
+            </li>
+            <li><img ng-src="{{ movie.Poster }}"></li>
+          </ul>
+
         </li>
       </ul>
     </section>
+
+    <div ng-show="movies.movie">
+      <section>
+        <h2>{{ movies.movie.Title }}</h2>
+        <h5>{{ movies.movie.Plot }}</h5>
+        <h6>Released: {{ movies.movie.Released }}</h6>
+        <img ng-src="{{ movies.movie.Poster }}">
+        <a ng-click="movies.resetMovie()">Back</a>
+
+      </section>
+      <section ng-repeat="trailer in movies.movie.trailers">
+        <ul>
+          <li class="showTrailers">{{ trailer.id.snippet.title }}
+            <youtube-video video-id="trailer.id.videoId"></youtube-video>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
-</div>

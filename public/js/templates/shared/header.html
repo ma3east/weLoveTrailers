@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" ng-controller="UsersController as users">
+<nav class="navbar navbar-default header" ng-controller="UsersController as users">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -24,11 +24,9 @@
       </ul>
 
       <ul class="nav navbar-nav">
-        <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp</a></li>
         <li ng-hide="users.isLoggedIn()"><a href="/#/login">Login</a></li>
+        <li ng-hide="users.isLoggedIn()"><a href="/#/signup">SignUp</a></li>
         <li ng-show="users.isLoggedIn()"><a href="/#/">Home</a></li>
-        <!-- <li ng-show="users.isLoggedIn()"><a href="/#/">Log Out</a></li> -->
-
         <li ng-show="users.isLoggedIn()">
           <a ng-click="users.logout()" href="/#/logout">Log Out</a>
         </li>
