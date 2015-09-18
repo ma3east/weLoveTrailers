@@ -22,6 +22,7 @@ function MoviesController(Movie, Trailer){
   self.all   = [];
   self.query = null;
   self.movie = null;
+  self.toggle = false;
 
   self.getMovies = function(){
     self.all = [];

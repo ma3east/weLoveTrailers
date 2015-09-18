@@ -14,10 +14,13 @@ body {
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
+  color: #F8E7E7;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Finger Paint', cursive;
+  color: cream;
+  opacity: 0.8
 }
 
 /*//image.tmdb.org/t/p/original/tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg*/
@@ -28,6 +31,15 @@ h1, h2, h3, h4, h5 {
 
 .centre {
   margin: 0 50%;
+}
+
+a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.logo {
+  font-size: 24px;
 }
 
 .back {
@@ -42,6 +54,9 @@ h1, h2, h3, h4, h5 {
    rgba(0, 0, 0, 0.8), 
    rgba(70, 70, 70, 0.8)
    ),
+}
+.black {
+  background-color: black;
 }
 
 .showTrailers {

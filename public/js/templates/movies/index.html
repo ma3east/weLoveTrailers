@@ -1,4 +1,8 @@
-  <h1>we love trailers</h1>
+  <h1>
+    <span class="animated bounceInLeft">we</span>
+    <span class="animated bounceInDown">love</span>
+    <span class="animated bounceInRight">trailers</span>
+  </h1>
   <div ng-controller="moviesController as movies">
     <section ng-hide="movies.movie" class="getMovies">
       <h4>Search for a movie, then use the link to get the trailers</h4>
@@ -10,7 +14,7 @@
         <div class="form-group">
           <button class="btn btn-info centre" type="submit">Search</button> 
         </div>
-        </form>
+      </form>
       <ul class="opacB">
         <li ng-repeat="movie in movies.all">
           <ul>
@@ -25,21 +29,26 @@
         </li>
       </ul>
     </section>
-<!-- After movie search, then videos from youtube will be displayed. -->
+    <!-- After movie search, then videos from youtube will be displayed. -->
     <div ng-show="movies.movie">
       <section class="opacB">
-        <h2>{{ movies.movie.title }}</h2>
+        <h4>{{ movies.movie.title }}</h4>
+        <!-- <h6>{{ movies.movie.overview }}</h6> -->
         <!-- <h5>{{ movies.movie.Plot }}</h5>
         <h6>Released: {{ movies.movie.Released }}</h6> -->
         <img ng-src="http://image.tmdb.org/t/p/w370/{{movies.movie.poster_path}}">
         <button ng-click="movies.resetMovie()" class="btn btn-info back">Back</button>
       </section>
-      
+      <br>
       <section ng-repeat="trailer in movies.movie.trailers">
         <ul>
           <li class="showTrailers">{{ trailer.id.snippet.title }}
-            <youtube-video video-id="trailer.id.videoId"></youtube-video>
-          </li>
+            <youtube-video video-id="trailer.id.videoId" player="bestPlayer"></youtube-video>
+
+          </li> 
+          <button ng-click="bestPlayer.playVideo()" class="btn btn-info">Play</button>
+          <button ng-click="bestPlayer.pauseVideo()" class="btn btn-info">Pause</button>
+          <button ng-click="bestPlayer.stopVideo()" class="btn btn-info">Stop</button>
         </ul>
       </section>
     </div>
