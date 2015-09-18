@@ -18,12 +18,14 @@ Initially i planned to use [OMDBapi](http://www.omdbapi.com/) for the movie post
 
 I was then going to use [Trailer Addict](http://www.traileraddict.com/trailerapi), for the poster information, their API also does not require a key. They send their data in XML, which isn't to hard to cover to JSON, however they also did not offer a lot of data.
 
-For the video trailers i decided to use Youtube, it is easy to setup an app and get a developer key, and i cannot think of any other free resource with such a comprehensive amount of data.
-https://developers.google.com/youtube/v3/
+For the video trailers i decided to use Youtube, it is easy to setup an app and get a developer key, and i cannot think of any other free resource with such a comprehensive amount of data.[Youtube Developers](https://developers.google.com/youtube/v3/)
 
+Finally at the last minute!, i decided to do a quick search and came across [themoviedb API](https://www.themoviedb.org/documentation/api), to use their data you need to register to get an API key. They do seem to offer quite a bit of data, and also they offer details of the latest and future films which was just what i needed. 
 
+NodeJs was use on the backend, with Mongoose and MongoDB for modelling and database.
 
-
-https://www.themoviedb.org/documentation/api
+On the fronted AngularJs was used along with Bootstrap for styling.
 
 ##What i learned
+
+APIs are cool!
