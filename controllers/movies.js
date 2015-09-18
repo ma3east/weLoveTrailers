@@ -3,25 +3,24 @@ var router  = express.Router();
 var request = require('request');
 var Trailer = require('../models/trailer');
 var Movie   = require('../models/movie');
+var tmdbAPIKey = process.env.TMDB_API_KEY;
+var tmdb = "https://api.themoviedb.org/3/search/movie?query=";
 
-// example omdbi req via browser - "http://www.omdbapi.com/?t=superman&y=&plot=short&r=json";
 
-//omdbapi movie search - not working
-// router.get('/:search', function(req, res) {
-//   var url = "http://www.omdbapi.com/?t=";
-//   var searchTerm = encodeURIComponent(req.params.search);
+router.get('/:search', function(req, res){
+  var searchTerm = encodeURIComponent(req.params.search);
+  
+  request(tmdb + searchTerm + "&api_key=" + tmdbAPIKey, function(err, response, theMovie){
 
-//   //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
-//   request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
-//     if (!err && response.statusCode == 200) {
-//       var data = JSON.parse(omdb); 
-//       res.status(200).json(data);
-//       console.log("this is omdb data");
-//       } else {
-//         console.log(err);
-//       }
-//     });
-// });
+    if (!err && response.statusCode == 200) {
+      var data = JSON.parse(theMovie); 
+      res.status(200).json(data);
+      console.log("this is tmdb data");
+    } else {
+      console.log(err + "there was an error with tmdb request");
+    }
+  });
+});
 
 // MOVIES INDEX -> /movies/
 router.get('/', function(req, res) {
@@ -34,13 +33,14 @@ router.get('/', function(req, res) {
       }
     });
   } else {
-    var url = "http://www.omdbapi.com/?t=";
+    console.log(req);
+    // var url = "http://www.omdbapi.com/?t=";
+    // var tmdb = "http://api.themoviedb.org/3/search/movie?query=";
     var searchTerm = encodeURIComponent(req.query.search);
 
-    //use t for single title, s for search (but dont get the plot/actors/poster etc if using s!)
-    request(url + searchTerm + "&plot=short&r=json", function(err, response, omdb){
+    request(tmdb + searchTerm + "&api_key=" + tmdbAPIKey, function(err, response, theMovie){
       if (!err && response.statusCode == 200) {
-        var data = JSON.parse(omdb); 
+        var data = JSON.parse(theMovie); 
         res.status(200).send(data);
       } else {
         res.status(500).send({ message: err });

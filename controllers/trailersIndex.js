@@ -19,7 +19,7 @@ router.get('/', function(req, res){
   var trailer6 = "http://api.traileraddict.com/?featured=yes&count=6&width=640&width=000";
 
   request(trailer6, function(err, response, trailer){
-    console.log(response)
+    console.log(response);
 
     var json = parser.toJson(trailer, options);
     if(!err && response.statusCode === 200){

@@ -16,23 +16,22 @@
           <ul>
             <li>
               <h3>
-                <a ng-click="movies.showMovie(movie)">{{ movie.Title }}</a>
+                <a ng-click="movies.showMovie(movie)">{{ movie.title}}</a>
               </h3>
             </li>
-            <li><img ng-src="{{ movie.Poster }}"></li>
+            <li><img ng-src="http://image.tmdb.org/t/p/w370/{{movie.poster_path}}"></li>
           </ul>
 
         </li>
       </ul>
     </section>
-<!-- After movie search, then videos from you tube will be displayed. -->
+<!-- After movie search, then videos from youtube will be displayed. -->
     <div ng-show="movies.movie">
       <section class="opacB">
-        <h2>{{ movies.movie.Title }}</h2>
+        <h2>{{ movies.movie.title }}</h2>
         <!-- <h5>{{ movies.movie.Plot }}</h5>
         <h6>Released: {{ movies.movie.Released }}</h6> -->
-        <img ng-src="{{ movies.movie.Poster }}">
-        <!-- <a ng-click="movies.resetMovie()" class="btn btn-info back">Back</a> -->
+        <img ng-src="http://image.tmdb.org/t/p/w370/{{movies.movie.poster_path}}">
         <button ng-click="movies.resetMovie()" class="btn btn-info back">Back</button>
       </section>
       

@@ -24,17 +24,17 @@ function MoviesController(Movie, Trailer){
   self.movie = null;
 
   self.getMovies = function(){
-    self.all = []
+    self.all = [];
 
     Movie.search({ search: self.query }, function(data){
-      self.all.push(data);
-      // console.log("self.movie = " + self.movie);
+      self.all = data.results;
+      console.log(data.results);
     }); 
   }
 
   self.showMovie = function(movie){
     self.movie = movie;
-    Trailer.search({ search: self.movie.Title }, function(data){
+    Trailer.search({ search: self.movie.title }, function(data){
       self.movie.trailers = data.items;
     })
   }
@@ -43,5 +43,7 @@ function MoviesController(Movie, Trailer){
     self.movie = null;
   }
 }
+
+// self.movie.Title
 
   
