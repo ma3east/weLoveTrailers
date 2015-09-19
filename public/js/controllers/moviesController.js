@@ -1,20 +1,7 @@
 angular
   .module("trailersApp")
   .controller("moviesController", MoviesController)
-  // .controller("MyCtrl", MyCtrl);
-
-  // MyCtrl.$inject = ['Movie', 'Trailer', '$scope'];
-
-  // function MyCtrl(Movie, Trailer, $scope){
-
-  //   $scope.theBestVideo = 'sMKoNBRZM1M';
-  // }
-
-  // myApp.controller('MyCtrl', function ($scope) {
-  //   // have a video id
-  //   $scope.theBestVideo = 'sMKoNBRZM1M';
-  // });  
-
+  
 MoviesController.$inject = ['Movie', 'Trailer'];
 function MoviesController(Movie, Trailer){
   var self   = this;
@@ -22,7 +9,6 @@ function MoviesController(Movie, Trailer){
   self.all   = [];
   self.query = null;
   self.movie = null;
-  self.toggle = false;
 
   self.getMovies = function(){
     self.all = [];
@@ -45,6 +31,6 @@ function MoviesController(Movie, Trailer){
   }
 }
 
-// self.movie.Title
+// self.movie.Title if using OMDBapi
 
   
