@@ -1,3 +1,5 @@
+//this is the app.js for the frontend
+
 angular
   .module('trailersApp', ['ngResource', 'angular-jwt', 'ui.router', 'youtube-embed'])
   .constant('API', 'http://localhost:9000/api')

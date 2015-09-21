@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 
-// var Trailer = require('./trailer');
-
 var Schema = mongoose.Schema;
 
 var movieSchema = new mongoose.Schema({

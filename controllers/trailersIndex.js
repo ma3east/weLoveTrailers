@@ -1,3 +1,5 @@
+//need to convert this over to movies controllers as no longer using omdbapi
+
 var express = require('express');
 var router = express.Router();
 var request = require('request');
