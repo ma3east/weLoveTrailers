@@ -20,7 +20,6 @@ router.use(function (error, request, response, next) {
 router.use('/api/users', require('./users'));
 router.use('/api/movies', require('./movies'));
 router.use('/api/trailers', require('./trailers'));
-router.use('/api/trailersIndex', require('./trailersIndex'));
 
 router.use('/api/auth', require('./authenticationController'));
 

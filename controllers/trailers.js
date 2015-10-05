@@ -1,18 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var parser = require('xml2json');
 
 var Movie = require('../models/movie');
 var Trailer = require('../models/trailer');
 
-// variables to use with xml2json
-var myJson;
-var options = {
-  object: true,
-};
-
-// search youtube - just enter search term, have appended trailer already
+// search you tube - just enter search term, have appended trailer already
 router.get('/:search', function(req, res){
   var youtubeServerKey = process.env.YOUTUBE_SERVER_API_KEY;
   var searchTerm = encodeURIComponent(req.params.search);
@@ -22,7 +15,7 @@ router.get('/:search', function(req, res){
     if (!err && response.statusCode == 200) {
       var data = JSON.parse(youtube); 
       res.status(200).json(data);
-      console.log("this is youtube data");
+      console.log("this is you tube data");
     } else {
       console.log(err);
     }
@@ -33,8 +26,7 @@ router.get('/:search', function(req, res){
 router.get('/', function(req, res){
   if (!req.query.search) {
     Trailer.find().populate('movieId similarId').exec(function(err, trailers){
-      // myJson = parser.toJson(trailers, options);
-
+      
       if (err) {
         res.send({ err: err, message: 'Something went wrong there are no trailers.!'});
       } else {
