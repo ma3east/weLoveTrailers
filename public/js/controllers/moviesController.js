@@ -2,8 +2,8 @@ angular
   .module("trailersApp")
   .controller("moviesController", MoviesController)
   
-MoviesController.$inject = ['Movie', 'Trailer'];
-function MoviesController(Movie, Trailer){
+MoviesController.$inject = ['Movie', 'Trailer', 'youtubeEmbedUtils'];
+function MoviesController(Movie, Trailer, youtubeEmbedUtils){
   var self   = this;
 
   self.all   = [];
@@ -29,8 +29,15 @@ function MoviesController(Movie, Trailer){
   self.resetMovie = function(){
     self.movie = null;
   }
+
+  self.remindMovie = function(trailerId){
+
+    console.log(youtubeEmbedUtils.getIdFromURL('https://www.youtube.com/watch?v=') + trailerId);
+    console.log(trailerId + " this is the trailer id");
+  }
 }
 
 // self.movie.Title if using OMDBapi
+// youtubeEmbedUtils.getIdFromURL('https://www.youtube.com/watch?v=VvTvtIeXJ1I')
 
   

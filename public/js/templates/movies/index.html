@@ -45,7 +45,9 @@
           <li class="showTrailers">{{ trailer.id.snippet.title }}
             <youtube-video video-id="trailer.id.videoId" player="bestPlayer"></youtube-video>
 
-          </li> 
+          </li>
+          <button ng-click="movies.remindMovie(trailer.id.videoId)" class="btn btn-info back">Reminder</button>
+          <br/> 
           <button ng-click="bestPlayer.playVideo()" class="btn btn-info">Play</button>
           <button ng-click="bestPlayer.pauseVideo()" class="btn btn-info">Pause</button>
           <button ng-click="bestPlayer.stopVideo()" class="btn btn-info">Stop</button>
